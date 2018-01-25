@@ -44,4 +44,13 @@ public class NodeTree {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "NodeTree{" +
+                "id=" + id +
+                ", parentId=" + parentId +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
