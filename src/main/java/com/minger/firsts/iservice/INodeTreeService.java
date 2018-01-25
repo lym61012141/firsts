@@ -10,9 +10,13 @@ import java.util.List;
  * 时间： 22:23
  */
 public interface INodeTreeService {
-    public NodeTree findById(Integer id);
+    NodeTree findById(Integer id);
 
-    public List<NodeTree> findByIds(List<Integer> ids);
+    List<NodeTree> findByIds(List<Integer> ids);
 
-    public List<NodeTree> findAll();
+    List<NodeTree> findAll();
+
+    void save(NodeTree nodeTree);
+
+    void delete(List<Integer> ids);
 }

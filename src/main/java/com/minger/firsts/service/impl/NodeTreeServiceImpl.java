@@ -6,6 +6,7 @@ import com.minger.firsts.iservice.INodeTreeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ import java.util.List;
  * 时间： 22:25
  */
 @Service
+@Transactional
 public class NodeTreeServiceImpl implements INodeTreeService {
     @Autowired
     private NodeTreeRepository nodeTreeRepository;
@@ -30,5 +32,15 @@ public class NodeTreeServiceImpl implements INodeTreeService {
     @Override
     public List<NodeTree> findAll() {
         return nodeTreeRepository.findAll();
+    }
+
+    @Override
+    public void save(NodeTree nodeTree) {
+        nodeTreeRepository.save(nodeTree);
+    }
+
+    @Override
+    public void delete(List<Integer> ids) {
+        nodeTreeRepository.deleteByIdIn(ids);
     }
 }

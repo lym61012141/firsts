@@ -1,13 +1,9 @@
 package com.minger.firsts.controller;
 
-import com.minger.firsts.dao.NodeTreeRepository;
 import com.minger.firsts.domain.NodeTree;
 import com.minger.firsts.iservice.INodeTreeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +14,25 @@ import java.util.List;
  * 时间： 22:31
  */
 @RestController
+@RequestMapping("firsts")
 public class NodeTreeController {
     @Autowired
     private INodeTreeService iNodeTreeService;
-    @Autowired
-    private NodeTreeRepository nodeTreeRepository;
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public NodeTree findById(@PathVariable Integer id) {
+
+        /*
+        测试代码
+        Map<String, Object> result = BeanConvertUtils.toMap(iNodeTreeService.findById(id));
+        Iterator iterator = result.keySet().iterator();
+        List<Object> collect1 = result.keySet().stream().map(k -> result.get(k)).collect(Collectors.toList());
+        List<String> collect = result.keySet().stream().collect(Collectors.toList());
+        while (iterator.hasNext()) {
+            Object key = iterator.next();
+            Object value = result.get(key);
+        }
+    */
         return iNodeTreeService.findById(id);
     }
 
@@ -46,6 +53,11 @@ public class NodeTreeController {
 
     @PostMapping("/save")
     public void save(NodeTree nodeTree) {
-        nodeTreeRepository.save(nodeTree);
+        iNodeTreeService.save(nodeTree);
+    }
+
+    @DeleteMapping("delete")
+    public void delete(List<Integer> ids) {
+        iNodeTreeService.delete(ids);
     }
 }

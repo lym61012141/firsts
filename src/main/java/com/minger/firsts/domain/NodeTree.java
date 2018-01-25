@@ -14,7 +14,7 @@ public class NodeTree {
     @GeneratedValue
     private Integer id;
     @Column(name = "PARENT_ID")
-    private String parentId;
+    private Integer parentId;
     @Column(name = "NAME")
     private String name;
 
@@ -29,11 +29,11 @@ public class NodeTree {
         this.id = id;
     }
 
-    public String getParentId() {
+    public Integer getParentId() {
         return parentId;
     }
 
-    public void setParentId(String parentId) {
+    public void setParentId(Integer parentId) {
         this.parentId = parentId;
     }
 
