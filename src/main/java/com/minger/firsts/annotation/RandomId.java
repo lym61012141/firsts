@@ -13,6 +13,5 @@ import java.util.Map;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RandomId {
-    Map<String, Object> result = new HashMap<>();
 
 }

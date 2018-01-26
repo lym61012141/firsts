@@ -22,17 +22,6 @@ public class NodeTreeController {
     @GetMapping("{id}")
     public NodeTree findById(@PathVariable Integer id) {
 
-        /*
-        测试代码
-        Map<String, Object> result = BeanConvertUtils.toMap(iNodeTreeService.findById(id));
-        Iterator iterator = result.keySet().iterator();
-        List<Object> collect1 = result.keySet().stream().map(k -> result.get(k)).collect(Collectors.toList());
-        List<String> collect = result.keySet().stream().collect(Collectors.toList());
-        while (iterator.hasNext()) {
-            Object key = iterator.next();
-            Object value = result.get(key);
-        }
-    */
         return iNodeTreeService.findById(id);
     }
 
